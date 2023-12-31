@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="./dashboard.css">
+    <title>Dashboard Page</title>
+</head>
+<body>
+    <h2><b>Company Metrics</b></h2>
+    <div class="row">
+        <div class="column">
+            <div class="card">
+                <h3 class="green">$406,411.29</h3>
+                <p>Total Revenue</p>
+            </div>
+        </div>
+
+        <div class="column">
+            <div class="card">
+                <h3>$620</h3>
+                <p>Total Jobs Avg</p>
+            </div>
+        </div>
+
+        <div class="column">
+            <div class="card">
+                <h3>655</h3>
+                <p>Tickets Created</p>
+            </div>
+        </div>
+
+        <div class="column">
+            <div class="card">
+                <h3>735</h3>
+                <p>Tickets Scheduled</p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="column">
+          <div class="card">
+            <h3 class="red">$110,448.8</h3>
+            <p>Outstanding Amount</p>
+          </div>
+        </div>
+      
+        <div class="column">
+          <div class="card">
+            <h3>105</h3>
+            <p>Memberships Sold</p>
+          </div>
+        </div>
+        
+        <div class="column">
+          <div class="card">
+            <h3>436</h3>
+            <p>Jobs Completed</p>
+          </div>
+        </div>
+        
+        <div class="column">
+          <div class="card">
+            <h3>65</h3>
+            <p>Total Cancelled</p>
+          </div>
+        </div>
+      </div>
+    
+    <div class="row1">
+        <div class="column1">
+            <h2><b>Revenue By Job Location</b></h2>
+            <div class="card1">
+                <canvas id="chart1"></canvas>
+                <p>Revenue for November 2019</p>
+            </div>
+        </div>
+
+        <div class="column1">
+            <h2><b>Revenue By Job Type</b></h2>
+            <div class="card1">
+                <canvas id="chart2"></canvas>
+                <p>Revenue for November 2019</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var data1 = {
+                labels: ['Everett', 'Seattle', 'Lynnwood' , 'Bothell' , 'Mukilteo' ,'Edmonds'],
+                datasets: [{
+                    data: [80000 , 75000 , 49000 , 47000 , 46000 ,34000],
+                    backgroundColor: ['#41BE98'],
+                    barThickness:20
+                    
+                }]
+            };
+
+            var data2 = {
+                labels: ['Service Plumbing', 'Bid Work HVAC', 'Service HVAC' , 'Bid Work Plumbing', 'HWT Replacement' ,'Maintainence','Material Sale'],
+                datasets: [{
+                    data: [182000, 130000, 79000, 77000,45000,43000,2000],
+                    backgroundColor: ['#41BE98'],
+                    barThickness:20
+                }]
+            };
+            
+
+            var ctx1 = document.getElementById('chart1').getContext('2d');
+            new Chart(ctx1, {
+                type: 'bar',
+                data: data1,
+                options: {
+                    scales: {
+                        y: {
+                          grid: {
+                            display: false
+                          }
+                        }
+                      },
+                    plugins:{
+                        legend:{
+                            display:false
+                        }
+                    },
+                    indexAxis: 'y', 
+                    responsive: true
+                  }
+            });
+
+            var ctx2 = document.getElementById('chart2').getContext('2d');
+            new Chart(ctx2, {
+                type: 'bar',
+                data: data2,
+                options: {
+                    scales: {
+                        y: {
+                          grid: {
+                            display: false
+                          }
+                        }
+                      },
+                    plugins:{
+                        legend:{
+                            display:false
+                        }
+                    },
+                    indexAxis: 'y', 
+                    responsive: true
+                  }
+            });
+        });
+    </script>
+</body>
+</html>

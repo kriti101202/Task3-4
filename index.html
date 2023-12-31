@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>smartserv</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="inner-warpper text-center">
+            <img src="image.png" alt="smartserv logo" class="image">
+            <form id="loginForm">
+                <div class="input-group">
+                    <label class="palceholder" for="username"></label>
+                    <input class="form-control" name="username" id="username" type="email"
+                        placeholder="Username" required />
+                    <span class="lighting"></span>
+                </div>
+                <div class="input-group">
+                    <label class="palceholder" for="password"></label>
+                    <input class="form-control" name="password" id="password" type="password" placeholder="Password"
+                        required />
+                    <span class="lighting"></span>
+                </div>
+                <button type="submit" id="login">Login</button>
+                <div class="clearfix supporter">
+                    <a class="forgot" href="mailto:support@smartserv.io?subject=Password%20Reset">Forgot your
+                        password?</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').onsubmit = function (event) {
+            event.preventDefault(); 
+
+            var email = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
+            var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            var passwordRegex = /^(?=.*[A-Z])(?=.*\d)[A-Za-z\d@]*$/;
+
+            if (!emailRegex.test(email)) {
+                alert('Please enter a valid email address.');
+                return false;
+            }
+
+            if (!passwordRegex.test(password)) {
+                alert('Password must contain an uppercase letter, a number, and only accept @ as a special character.');
+                return false;
+            }
+
+            if (password !== 'SmartServTest@123') {
+                alert('Invalid password. Please try again.');
+                return false;
+            }
+            window.location.href = 'dashboard.html';
+        };
+    </script>
+</body>
+
+</html>
